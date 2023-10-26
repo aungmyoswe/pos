@@ -1,0 +1,495 @@
+<section class="oe_container">
+    <div class="oe_row oe_spaced">
+        <div class="oe_span12" style='font-size: 140%;font-weight: 0;font-family: "Lato", "Open Sans", "Helvetica", Sans;'>
+            <h2 class="oe_slogan" style="color:#875A7B;">POS Keyboard</h2>
+            <h3 class="oe_slogan">Inspired by modal editing, and keybindings of VI for extreme productivity</h3>
+            <p>
+                POS Keyboard addon provides complete keyboard support for Oddo's POS interface.
+                It is inspired by modal editing, and keybindings of VI.
+                So one can perform all the standard operations efficiently with just a keyboard.
+                It provides keyboard support for all screens, including the product screen, the payment screen,
+                recipient screen, client screen and for the popups.
+            </p>
+            <p>
+                Keybindings are split into two modes named, <i class="fa fa-terminal"></i> <em>NORMAL</em>, and <i class="fa fa-search"></i> <em>SEARCH</em>, which each support very different actions.
+            </p>
+        </div>
+    </div>
+</section>
+
+<section class="oe_container">
+    <div class="oe_row oe_spaced">
+        <div class="oe_span12" style='font-size: 120%;font-weight: 0;font-family: "Lato", "Open Sans", "Helvetica", Sans;'>
+            <h3><i class="fa fa-terminal"></i> NORMAL mode:</h3>
+            <h4>Among the actions that you could perform in the NORMAL mode:</h4>
+            <ul>
+                <li>Insert new order</li>
+                <li>Delete current order</li>
+                <li>Interact with the Number-pad</li>
+                <li>Interact with the Action-pad</li>
+                <li>Interact with the Order Widget (eg:- Delete an order-line)</li>
+                <li>Interact with popups</li>
+                <li>Switch between Qty, Disc, Price</li>
+                <li>Finalize order</li>
+                <li>Switch to SEARCH mode</li>
+            </ul>
+        </div>
+    </div>
+</section>
+
+<section class="oe_container">
+    <div class="oe_row oe_spaced">
+        <div class="oe_span12" style='font-size: 120%;font-weight: 0;font-family: "Lato", "Open Sans", "Helvetica", Sans;'>
+            <h3><i class="fa fa-search"></i> SEARCH mode:</h3>
+            <p>
+                In the the search mode, one of the text input fields will be given the focus.
+            </p>
+            <h4>Among the actions that you could perform in the SEARCH mode:</h4>
+            <ul>
+              <li>Filter out an item out of out of all the products displayed in the product screen</li>
+              <li>Add that item to the order</li>
+              <li>Filter out a customer, and assign that customer to an order</li>
+              <li>Return back to NORMAL mode</li>
+            </ul>
+        </div>
+    </div>
+</section>
+
+<div class="section" id="usage">
+    <h2>Usage</h2>
+    <ul>
+        <li><dl class="first docutils">
+            <dt><a class="reference internal" href="#the-product-screen">1. The Product Screen</a></dt>
+            <dd><ul class="first last">
+                <li><p class="first"><a class="reference internal" href="#search-mode">1.1 SEARCH Mode</a></p>
+                </li>
+                <li><dl class="first docutils">
+                    <dt><a class="reference internal" href="#normal-mode">1.2 NORMAL Mode</a></dt>
+                    <dd><ul class="first last simple">
+                        <li><a class="reference internal" href="#the-num-pad">1.2.1 The Num Pad</a></li>
+                        <li><a class="reference internal" href="#the-action-pad">1.2.2 The Action Pad</a></li>
+                        <li><a class="reference internal" href="#the-order-widget">1.2.3 The Order Widget</a></li>
+                    </ul>
+                    </dd>
+                </dl>
+                </li>
+            </ul>
+            </dd>
+        </dl>
+        </li>
+        <li><p class="first"><a class="reference internal" href="#payment-screen">2. Payment Screen</a></p>
+        </li>
+        <li><p class="first"><a class="reference internal" href="#the-receipt-screen">3. The Receipt Screen</a></p>
+        </li>
+        <li><dl class="first docutils">
+            <dt><a class="reference internal" href="#the-client-list-screen">4. The Client List Screen</a></dt>
+            <dd><ul class="first last simple">
+                <li><a class="reference internal" href="#id1">4.1 NORMAL Mode</a></li>
+                <li><a class="reference internal" href="#id2">4.2 SEARCH Mode</a></li>
+            </ul>
+            </dd>
+        </dl>
+        </li>
+        <li><p class="first"><a class="reference internal" href="#the-client-details-screen">5. The Client Details Screen</a></p>
+        </li>
+    </ul>
+    <div class="section" id="the-product-screen">
+        <h3>1. The Product Screen</h3>
+        <p>The product screen is the default screen for orders and is the startup screen of the POS interface.
+            It includes several sub-widgets, such as product list widget, order widget, Numpad, Actionpad and the like.</p>
+        <table class="table table-striped table-bordered table-hover table-condensed">
+            <colgroup>
+                <col class="col-xs-2"><col class="col-xs-2"><col class="col-xs-8">
+            </colgroup>
+            <tbody>
+            <tr>
+
+                <th>Mode</th>
+                <th>Key</th>
+                <th>Description</th>
+            </tr>
+            <tr>
+                <td>NORMAL</td>
+                <td><kbd>ESC</kbd></td>
+                <td>
+                    Product screen opens by default in NORMAL mode.
+                    Only in NORMAL mode, that you can interact with widgets mentioned above.
+                    You can press <kbd>ESC</kbd> to get back from INSERT to NORMAL mode.
+                </td>
+            </tr>
+            <tr>
+                <td>SEARCH</td>
+                <td><kbd>s</kbd></td>
+                <td>
+                    In SEARCH mode text input field named 'Search Products' will have the focus. You can filter out products that is being shown in the product list widget while in the SEARCH mode.
+                </td>
+            </tr>
+            </tbody>
+        </table>
+        <div class="section" id="search-mode">
+            <h4>1.1 SEARCH Mode</h4>
+            <p>While in SEARCH mode you can filter out the products that you'd need to add to the current order.</p>
+            <table class="table table-striped table-bordered table-hover table-condensed" border="1">
+                <colgroup>
+                    <col width="19%">
+                    <col width="7%">
+                    <col width="74%">
+                </colgroup>
+                <thead valign="bottom">
+                <tr><th class="head">Action</th>
+                    <th class="head">Key</th>
+                    <th class="head">Description</th>
+                </tr>
+                </thead>
+                <tbody valign="top">
+                <tr><td>Add item to order</td>
+                    <td><kbd>ENTER</kbd></td>
+                    <td>Once you filtered out single item out of out of all the products displayed in the product screen,
+                        press <kbd>ENTER </kbd>to add that item to the order.</td>
+                </tr>
+                <tr><td>Return to NORMAL mode</td>
+                    <td><kbd>ESC</kbd></td>
+                    <td>If you press <kbd>ESC</kbd> while search field has the focus. then the focus is lost. If you press <kbd>s</kbd> again, search field will regain focus.</td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="section" id="normal-mode">
+            <h4>1.2 NORMAL Mode</h4>
+            <p>Actions (not bind to any particular widget) that can be performed while in the NORMAL mode.</p>
+            <table class="table table-striped table-bordered table-hover table-condensed">
+                <colgroup>
+                    <col width="61%">
+                    <col width="39%">
+                </colgroup>
+                <thead valign="bottom">
+                <tr><th class="head">Action</th>
+                    <th class="head">Key</th>
+                </tr>
+                </thead>
+                <tbody valign="top">
+                <tr><td>Insert new order</td>
+                    <td><kbd>INSERT</kbd></td>
+                </tr>
+                <tr><td>Destroy current order</td>
+                    <td><kbd>DELETE</kbd></td>
+                </tr>
+                <tr><td>Confirm pop up</td>
+                    <td><kbd>ENTER</kbd></td>
+                </tr>
+                <tr><td>Cancel pop up</td>
+                    <td><kbd>ESC</kbd></td>
+                </tr>
+                </tbody>
+            </table>
+            <div class="section" id="the-num-pad">
+                <h5>1.2.1 The Num Pad</h5>
+                <table class="table table-striped table-bordered table-hover table-condensed">
+                    <colgroup>
+                        <col width="23%">
+                        <col width="15%">
+                        <col width="62%">
+                    </colgroup>
+                    <thead valign="bottom">
+                    <tr><th class="head">Action</th>
+                        <th class="head">Key</th>
+                        <th class="head">Description</th>
+                    </tr>
+                    </thead>
+                    <tbody valign="top">
+                    <tr><td>Enter Number</td>
+                        <td><kbd>1</kbd> - <kbd>9</kbd></td>
+                        <td>&nbsp;</td>
+                    </tr>
+                    <tr><td>Delete Last Character</td>
+                        <td><kbd>BACKSPACE</kbd></td>
+                        <td>If qty is selected and order line shows 0 units, the selected order line will be deleted</td>
+                    </tr>
+                    </tbody>
+                </table>
+                <div class="line-block">
+                    <div class="line"><br></div>
+                </div>
+                <table class="table table-striped table-bordered table-hover table-condensed">
+                    <colgroup>
+                        <col width="25%">
+                        <col width="75%">
+                    </colgroup>
+                    <thead valign="bottom">
+                    <tr><th class="head">Mode</th>
+                        <th class="head">Key</th>
+                    </tr>
+                    </thead>
+                    <tbody valign="top">
+                    <tr><td>Qty</td>
+                        <td><kbd>q</kbd> or <kbd>/</kbd></td>
+                    </tr>
+                    <tr><td>Disc</td>
+                        <td><kbd>d</kbd> or <kbd>-</kbd></td>
+                    </tr>
+                    <tr><td>Price</td>
+                        <td><kbd>p</kbd> or <kbd>*</kbd></td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="section" id="the-action-pad">
+                <h5>1.2.2 The Action Pad</h5>
+                <p>The action pad contains the payment button and the customer selection button.</p>
+                <table class="table table-striped table-bordered table-hover table-condensed">
+                    <colgroup>
+                        <col width="61%">
+                        <col width="39%">
+                    </colgroup>
+                    <thead valign="bottom">
+                    <tr><th class="head">Button</th>
+                        <th class="head">Shortcut</th>
+                    </tr>
+                    </thead>
+                    <tbody valign="top">
+                    <tr><td>Customer</td>
+                        <td><kbd>c</kbd></td>
+                    </tr>
+                    <tr><td>Payment</td>
+                        <td><kbd>Enter</kbd></td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="section" id="the-order-widget">
+                <h5>1.2.3 The Order Widget</h5>
+                <p>The Order Widget displays information about the current order. It can have zero or more order lines.</p>
+                <table class="table table-striped table-bordered table-hover table-condensed">
+                    <colgroup>
+                        <col width="28%">
+                        <col width="25%">
+                        <col width="48%">
+                    </colgroup>
+                    <thead valign="bottom">
+                    <tr><th class="head">Action</th>
+                        <th class="head">Key</th>
+                        <th class="head">Note</th>
+                    </tr>
+                    </thead>
+                    <tbody valign="top">
+                    <tr><td>Change Selected Order Line</td>
+                        <td><kbd>ArrowDown</kbd> (<kbd>j</kbd>) and <kbd>ArrowUp</kbd> (<kbd>k</kbd>)</td>
+                        <td>&nbsp;</td>
+                    </tr>
+                    <tr><td>Delete Last Character</td>
+                        <td><kbd>BACKSPACE</kbd></td>
+                        <td>Differ based on the mode being selected: Qty, Disc, Price</td>
+                    </tr>
+                    <tr><td>Delete Selected Order Line</td>
+                        <td><kbd>r</kbd></td>
+                        <td>&nbsp;</td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    <div class="section" id="payment-screen">
+        <h3>2. Payment Screen</h3>
+        <p>The Payment Screen handles the payments, and validates the order.</p>
+        <table class="table table-striped table-bordered table-hover table-condensed">
+            <colgroup>
+                <col width="20%">
+                <col width="19%">
+                <col width="60%">
+            </colgroup>
+            <thead valign="bottom">
+            <tr><th class="head">Action</th>
+                <th class="head">Key</th>
+                <th class="head">Description</th>
+            </tr>
+            </thead>
+            <tbody valign="top">
+            <tr><td>Numpad Input</td>
+                <td><kbd>1</kbd> - <kbd>9</kbd> and <kbd>.</kbd></td>
+                <td>Used to enter the tendered amount in selected payment-line</td>
+            </tr>
+            <tr><td>Validate</td>
+                <td><kbd>Enter</kbd></td>
+                <td>&nbsp;</td>
+            </tr>
+            <tr><td>Change selected payment line</td>
+                <td><kbd>ArrowDown</kbd> and <kbd>ArrowUp</kbd></td>
+                <td>&nbsp;</td>
+            </tr>
+            <tr><td>Delete selected payment line</td>
+                <td><kbd>r</kbd></td>
+                <td>&nbsp;</td>
+            </tr>
+            <tr><td>Scroll payment methods view</td>
+                <td><kbd>j</kbd> and <kbd>k</kbd></td>
+                <td>Only useful if there are several payment methods</td>
+            </tr>
+            <tr><td>Set customer</td>
+                <td><kbd>c</kbd></td>
+                <td>You will be prompt with the client list screen, where you could assign a customer for the order</td>
+            </tr>
+            <tr><td>Go back to the product screen</td>
+                <td><kbd>ESC</kbd></td>
+                <td>&nbsp;</td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+    <div class="section" id="the-receipt-screen">
+        <h3>3. The Receipt Screen</h3>
+        <p>This displays the order's receipt and gives an option to print it on your web browser.</p>
+        <table class="table table-striped table-bordered table-hover table-condensed">
+            <colgroup>
+                <col width="29%">
+                <col width="18%">
+                <col width="53%">
+            </colgroup>
+            <thead valign="bottom">
+            <tr><th class="head">Action</th>
+                <th class="head">Key</th>
+                <th class="head">Description</th>
+            </tr>
+            </thead>
+            <tbody valign="top">
+            <tr><td>Finalize the order</td>
+                <td><kbd>ENTER</kbd></td>
+                <td>Mark the current order as completed and proceed to the next</td>
+            </tr>
+            <tr><td>Print receipt</td>
+                <td><kbd>p</kbd></td>
+                <td>&nbsp;</td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+    <div class="section" id="the-client-list-screen">
+        <h3>4. The Client List Screen</h3>
+        <p>You can use client list screen to create, edit, and to assign a customer to an order.</p>
+        <table class="table table-striped table-bordered table-hover table-condensed">
+            <colgroup>
+                <col width="21%">
+                <col width="8%">
+                <col width="72%">
+            </colgroup>
+            <thead valign="bottom">
+            <tr><th class="head">Mode</th>
+                <th class="head">Key</th>
+                <th class="head">Description</th>
+            </tr>
+            </thead>
+            <tbody valign="top">
+            <tr><td>SEARCH</td>
+                <td><kbd>s</kbd></td>
+                <td>Gives focus to the text input field 'Search Customers'</td>
+            </tr>
+            <tr><td>NORMAL</td>
+                <td><kbd>ESC</kbd></td>
+                <td>Client screen opens by default in NORMAL mode. You can press <kbd>ESC</kbd> to get back to NORMAL mode while in SEARCH mode.</td>
+            </tr>
+            </tbody>
+        </table>
+        <div class="section" id="id1">
+            <h4>4.1 NORMAL Mode</h4>
+            <table class="table table-striped table-bordered table-hover table-condensed">
+                <colgroup>
+                    <col width="33%">
+                    <col width="12%">
+                    <col width="55%">
+                </colgroup>
+                <thead valign="bottom">
+                <tr><th class="head">Action</th>
+                    <th class="head">Key</th>
+                    <th class="head">Description</th>
+                </tr>
+                </thead>
+                <tbody valign="top">
+                <tr><td>Switch to SEARCH mode</td>
+                    <td><kbd>s</kbd></td>
+                    <td>Gives focus to the text input field 'Search Customers'</td>
+                </tr>
+                <tr><td>Add new customer</td>
+                    <td><kbd>a</kbd></td>
+                    <td>&nbsp;</td>
+                </tr>
+                <tr><td>Cancel</td>
+                    <td><kbd>ESC</kbd></td>
+                    <td>Return back to the previous screen</td>
+                </tr>
+                <tr><td>DESELECT customer</td>
+                    <td><kbd>ENTER</kbd></td>
+                    <td>Only visible if a customer is already being selected</td>
+                </tr>
+                <tr><td>Edit selected customer</td>
+                    <td><kbd>e</kbd></td>
+                    <td>Only visible if a customer is already being selected</td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="section" id="id2">
+            <h4>4.2 SEARCH Mode</h4>
+            <p>In SEARCH mode the text input field 'Search Customers' is given the focus, and you can use it to filter out a customer that you'd need to assign to the current order.
+                Once a single customer being filtered out from the list, press <kbd>ENTER</kbd> to assign that customer to the current order.</p>
+            <table class="table table-striped table-bordered table-hover table-condensed">
+                <colgroup>
+                    <col width="22%">
+                    <col width="8%">
+                    <col width="70%">
+                </colgroup>
+                <thead valign="bottom">
+                <tr><th class="head">Action</th>
+                    <th class="head">Key</th>
+                    <th class="head">Description</th>
+                </tr>
+                </thead>
+                <tbody valign="top">
+                <tr><td>SELECT CUSTOMER</td>
+                    <td><kbd>ENTER</kbd></td>
+                    <td>Pressing <kbd>ENTER</kbd> will select the filtered customer out of all the customers displayed in the client screen.</td>
+                </tr>
+                <tr><td>Return to NORMAL mode</td>
+                    <td><kbd>ESC</kbd></td>
+                    <td>If you press <kbd>ESC</kbd> while search field has the focus. then the focus is lost.</td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div class="section" id="the-client-details-screen">
+        <h3>5. The Client Details Screen</h3>
+        <p>The UI to add, update customer information.
+            You can use usual <kbd>shift</kbd>, and <kbd>shift</kbd> + <kbd>tab</kbd> keys to move between input fields, forward and backward respectively.</p>
+        <table class="table table-striped table-bordered table-hover table-condensed">
+            <colgroup>
+                <col width="19%">
+                <col width="7%">
+                <col width="74%">
+            </colgroup>
+            <thead valign="bottom">
+            <tr><th class="head">Action</th>
+                <th class="head">Key</th>
+                <th class="head">Description</th>
+            </tr>
+            </thead>
+            <tbody valign="top">
+            <tr><td>Save customer details</td>
+                <td><kbd>ENTER</kbd></td>
+                <td>If any of input fields have the focus, first press <kbd>ESC</kbd> to switch to NORMAL mode. Then press <kbd>ENTER</kbd> to save the changes being made.</td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<section class="oe_container">
+    <div class="oe_row oe_spaced">
+        <div class="oe_span12" style='font-size: 140%;font-weight: 0;font-family: "Lato", "Open Sans", "Helvetica", Sans;'>
+            <h2>Support</h2>
+            <blockquote style="font-size:90%">
+                Want to request a feature, or report a bug? Just open an issue in our public <a href="https://bitbucket.org/reversiblean/odoo-addons/issues?status=new&status=open" target="_blank">issue tracker</a>.
+                No registration is required.
+            </blockquote>
+        </div>
+    </div>
+</section>

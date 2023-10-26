@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <template id="inventory_report_by_warehouse">
+        <t t-call="web.html_container">
+        <t t-set="data_report_margin_top" t-value="10"/>
+        <t t-set="data_report_header_spacing" t-value="9"/>
+        <t t-set="data_report_dpi" t-value="110"/>
+            <t t-call="web.internal_layout">
+                <div class="page">
+                    <h2 class="text-center">Stock Reordering Report</h2>
+                    <t t-foreach="get_lines(data).items()"
+                                    t-as="warehouse">
+                    <h4 class="text-center">Warehouse: <t t-esc="get_warehouse(warehouse[0])"/></h4>
+                        <div class="row">                            
+                            <div class="col-xs-12 text-center">
+                                <strong>Date: </strong><t t-esc="(data['form']['start_date']) + ' To ' + (data['form']['end_date'])"></t>
+                                <br/>
+                                <br/>
+                            </div>                         
+                        </div>
+                        <table class="table table-condensed">
+                            <thead>
+                                <tr>                                  	 
+                                    <th class="text-center" style="border: 1px solid gray;align:center;background-color:lightgray; font-size: 16px;font-family: verdana;width:30%;">
+                                        <strong> Product Name </strong>
+                                    </th> 
+                                    <th class="text-center" style="border: 1px solid gray;background-color:lightgray; font-family: verdana;width:14%;">Internal Reference</th>           
+                                    <th class="text-center" style="border: 1px solid gray;background-color:lightgray; font-family: verdana;width:14%;">Min Qty</th>
+                                    <th class="text-center" style="border: 1px solid gray;background-color:lightgray; font-family: verdana;width:14%;">Max Qty</th>
+                                    <th class="text-center" style="border: 1px solid gray;background-color:lightgray; font-family: verdana;width:14%;">On Hand Qty</th>  
+                                    <th class="text-center" style="border: 1px solid gray;background-color:lightgray; font-family: verdana;width:14%;">Over/Reduce Qty</th> 
+                                </tr>
+                            </thead>
+                            <tbody>                   
+                                    <t t-if="data['form']['display_all_products']">
+                                        <t t-foreach="(warehouse[1])"
+                                            t-as="l">
+                                            <tr>
+                                                <td class="text-left" style="border: 1px solid gray;">
+                                                    <p
+                                                        t-esc="get_product_name(l['product_id'])" />
+                                                </td>
+                                                <td class="text-left" style="border: 1px solid gray;">
+                                                    <p
+                                                        t-esc="get_default_code(l['product_id'])" />
+                                                </td>                                                 
+                                                <td class="text-right" style="border: 1px solid gray;">
+                                                    <p
+                                                        t-esc="(l['product_qty_min'])" />
+                                                </td>
+                                                <td class="text-right" style="border: 1px solid gray;">
+                                                    <p
+                                                        t-esc="(l['product_qty_max'])" />
+                                                </td>
+                                                <td class="text-right" style="border: 1px solid gray;">
+                                                    <p
+                                                        t-esc="(get_ending_inventory(l['product_qty_in'],l['product_qty_out'],l['product_qty_internal'],l['product_qty_adjustment']) or 0.0)" />
+                                                </td>
+                                                <td class="text-right" style="border: 1px solid gray;">
+                                                    <p
+                                                        t-esc="((get_ending_inventory(l['product_qty_in'],l['product_qty_out'],l['product_qty_internal'],l['product_qty_adjustment']) or 0.0) - l['product_qty_max'])" />
+                                                </td>
+                                            </tr>
+                                        </t>
+                                    </t>                                                             
+                            </tbody>
+                        </table>
+                        <p style="page-break-before:always;">
+                        </p>
+                     </t>
+                </div>
+            </t>
+        </t>
+    </template>
+</odoo>

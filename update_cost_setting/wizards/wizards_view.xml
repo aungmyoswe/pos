@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="view_change_standard_price_extension" model="ir.ui.view">
+            <field name="name">Change Standard Price</field>
+            <field name="model">stock.change.standard.price</field>
+            <field name="inherit_id" ref="stock_account.view_change_standard_price"/>
+            <field name="arch" type="xml">
+            <field name="counterpart_account_id" position="replace">
+                <field name="counterpart_account_id" attrs="{'invisible': [('counterpart_account_id_required', '=', False)], 'required': [('counterpart_account_id_required', '=', True)],'readonly':}" readonly="1"/>
+            </field>
+            </field>
+        </record>
+    </data>
+</odoo>

@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+	<data>
+		<record id="view_12month_report_list" model="ir.ui.view">
+			<field name="name">Twelve Month Report</field>
+			<field name="model">twelve.month.report</field>
+			<field name="arch" type="xml">
+				<form string="Inventory" version="7.0">
+					<group string="Company">
+						<field name="company_id"  string="Company" widget="selection" />	
+					</group>
+					<group string="Warehouses">
+						<field name="warehouse_ids" widget="many2many_tags" string="Warehouses" options="{'no_open':True, 'no_quick_create':True,'no_create_edit':True}"/>
+					</group>
+					<group string="Location"
+						attrs="{'invisible': [('warehouse_ids', '=', [(6, False, [])])]}">
+						<field name="location_id" string="Select Location" options="{'no_open':True, 'no_quick_create':True,'no_create_edit':True}"/>
+					</group>
+					<group>
+						<field name="date" />
+					</group>
+					<group string="Select Products">
+						<field name="filter_product_ids" nolabel="1" options="{'no_quick_create':True,'no_create_edit':True}">
+							<tree string="Products">
+								<field name="name" />
+								<field name="default_code" />
+								<field name="attribute_value_ids" />
+								<field name="qty_available" />
+							</tree>
+						</field>
+					</group>
+					<footer>
+						<button string="Print" name="print_report_xlsx" type="object" default_focus="1"  class="oe_highlight" context="{'xls_export':1}" icon="fa-download"/>
+                        <button string="Cancel" class="oe_link" special="cancel" />
+					</footer>
+				</form>
+			</field>
+		</record>
+		<record model="ir.actions.act_window" id="action_12month_report">
+			<field name="name">Twelve Month Report</field>
+			<field name="res_model">twelve.month.report</field>
+			<field name="view_type">form</field>
+			<field name="view_mode">tree,form</field>
+			<field name="view_id" ref="view_12month_report_list" />
+			<field name="target">new</field>
+		</record>
+		<report id="twelve_month_report"
+            model="twelve.month.report"
+            string="Twelve Month Report"
+            name="12month_report.twelve_month_xlsx_report"
+            file="12month_report.twelve_month_xlsx_report"
+            menu="False"
+            attachment_use="False"/>
+
+		<menuitem action="action_12month_report" string="Twelve Month Report" 
+			id="menu_action_12month_report"
+			parent="stock.menu_warehouse_report" sequence="5" />
+	</data>
+</openerp>

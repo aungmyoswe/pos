@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+
+    <template id="label_57x35">
+        <table class="table table-bordered col-xs-4" style="padding-top:5px !important;">
+            <tr style="border:0;margin:0;padding:0;">
+                <td class="col-xs-4 text-center" style="border:0;margin:0;padding:0;">
+                    <div style="overflow:hidden; height:50px !important;line-height: 1.1;font-size: 13px; text-align:center;padding-top:5px;">
+                        <span t-field="label.product_id.name"/>
+                        <span t-if="label.product_id.attribute_value_ids" t-esc="u', '.join(map(lambda x: x.attribute_id.name + u': ' + x.name, label.product_id.attribute_value_ids))"/>
+                    </div>
+                    <div style="width: 100%; padding: 0; margin: 0; font-size: 14px; font-weight: bold;">
+                        <span t-field="label.product_id.currency_id.symbol"/>
+                        <span t-esc="'{0:,.0f}'.format(int(label.product_id.list_price))" />
+                    </div>
+                    <div t-if="label.product_id.default_code" style="width: 100%; padding: 0; margin: 0; font-size: 14px;">
+                        <span t-field="label.product_id.default_code"/>
+                    </div>
+                    <!-- <img t-if="label.product_id.barcode" t-att-src="'/report/barcode/?type=%s&amp;value=%s&amp;width=%s&amp;height=%s' % ('EAN13', label.product_id.barcode, 600, 100)" style="width:100%;height:20%;padding:0px;"/> -->
+                     <t t-if="label.product_id.barcode">
+                        <img alt="Barcode" t-if="len(label.product_id.barcode) == 13" t-att-src="'/report/barcode/?type=%s&amp;value=%s&amp;width=%s&amp;height=%s' % ('EAN13', label.product_id.barcode, 600, 45)" style="width:100%;height:13%;padding:0;"/>
+                        <img alt="Barcode" t-elif="len(label.product_id.barcode) == 8" t-att-src="'/report/barcode/?type=%s&amp;value=%s&amp;width=%s&amp;height=%s' % ('EAN8', label.product_id.barcode, 600, 45)" style="width:100%;height:13%;padding:0;"/>
+                        <img alt="Barcode" t-else="" t-att-src="'/report/barcode/?type=%s&amp;value=%s&amp;width=%s&amp;height=%s' % ('Code128', label.product_id.barcode, 600, 45)" style="width:100%;height:13%;padding:0;"/>
+                    </t>
+                </td>
+            </tr>
+        </table>
+    </template>
+
+    <template id="report_product_label_57x35_template">
+        <t t-call="web.html_container">
+            <t t-call="web.basic_layout">
+                <t t-set="count" t-value="0" />
+                <div class="page">
+                    <div class="oe_structure"/>
+                    <t t-foreach="docs" t-as="label">
+                        <t t-set="qty" t-value="1" />
+                        <t t-if="label.qty">
+                            <t t-set="qty" t-value="label.qty" />
+                        </t>
+                        <t t-foreach="list(range(qty))" t-as="index_qty">
+                            <div t-if="count % 21 == 0" style="page-break-after:always;"/>
+                            <!-- <div t-if="count % 3 == 0" style="clear:both;"/> -->
+                            <div style="width:32%;float:left;height:145px;margin:0;padding-left:0;padding-right:15px;padding-top:20px;padding-bottom:0;">
+                                <t t-call="garazd_product_label.label_57x35"/>
+                            </div>
+                            <t t-set="count" t-value="count+1" />
+                        </t>
+                    </t>
+                </div>
+            </t>
+        </t>
+    </template>
+     <template id="report_simple_label_ext" inherit_id="product.report_simple_label">
+            <xpath expr="//div" position="replace">
+               <div style="width: 33%; display: inline-table; height:160px;">
+                <table style="border: dashed;height:160px !important;padding:5px;width:100%;">
+                    <tr style="overflow:hidden;background-color:#70db70;height:60px !important;">
+                        <td style="font-size:16px;padding-left:5px;padding-top:5px;">
+                            <span t-field="product.name"/>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="height:35px;font-size:16px;font-weight:bold;padding-left:5px !important;">
+                            <div>
+                                <span t-field="product.currency_id.symbol"/>
+                                <span t-esc="'{0:,.0f}'.format(int(product.lst_price))"/>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="width:100%;">
+                            <div class="row">
+                                <t t-if="product.barcode">
+                                    <div class="col-xs-6" style="height: 25px;width:60%;">
+                                        <img alt="Barcode" t-if="len(product.barcode) == 13" t-att-src="'/report/barcode/?type=%s&amp;value=%s&amp;width=%s&amp;height=%s' % ('EAN13', product.barcode, 500, 25)" style="width:100%;height:25px;text-align:left;"/>
+                                        <img alt="Barcode" t-elif="len(product.barcode) == 8" t-att-src="'/report/barcode/?type=%s&amp;value=%s&amp;width=%s&amp;height=%s' % ('EAN8', product.barcode, 500, 25)" style="width:100%;height:25px;text-align:left;"/>
+                                        <img alt="Barcode" t-else="" t-att-src="'/report/barcode/?type=%s&amp;value=%s&amp;width=%s&amp;height=%s' % ('Code128', product.barcode,500, 25)" style="width:100%;height:25px;text-align:left;"/>
+                                    </div>
+                                    <div class="col-xs-6" style="height:25px;width:40%;">
+                                        <strong><span t-field="product.default_code"/></strong>
+                                    </div>
+                                </t>
+                                <t t-else="">
+                                    <div class="col-xs-12" style="height: 25px;width:100%;">
+                                        <span class="text-muted" style="height:25px;">No barcode available</span>
+                                    </div>
+                                </t>
+                            </div>
+                            <t t-if="product.barcode" >
+                                <div style="text-align:left;padding-top:10px;padding-left:30px;">
+                                    <span t-field="product.barcode"/>
+                                </div>
+                            </t>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </xpath>
+    </template>
+</odoo>

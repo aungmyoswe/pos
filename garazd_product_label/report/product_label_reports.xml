@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+
+    <record id="paperformat_a5_clear" model="report.paperformat">
+        <field name="name">A5 w/o header</field>
+        <field name="default" eval="True"/>
+        <field name="format">A5</field>
+        <field name="page_height">0</field>
+        <field name="page_width">0</field>
+        <field name="orientation">Portrait</field>
+        <field name="margin_top">1.2</field>
+        <field name="margin_bottom">0</field>
+        <field name="margin_left">0</field>
+        <field name="margin_right">0</field>
+        <field name="header_line" eval="False"/>
+        <field name="header_spacing">0</field>
+        <field name="dpi">99</field>
+    </record>
+
+    <!-- A4 paper format -->
+    <record id="paperformat_a4_clear" model="report.paperformat">
+        <field name="name">A4 w/o header</field>
+        <field name="default" eval="True"/>
+        <field name="format">A4</field>
+        <field name="page_height">0</field>
+        <field name="page_width">0</field>
+        <field name="orientation">Portrait</field>
+        <field name="margin_top">0</field>
+        <field name="margin_bottom">0</field>
+        <field name="margin_left">0</field>
+        <field name="margin_right">0</field>
+        <field name="header_line" eval="False"/>
+        <field name="header_spacing">0</field>
+        <field name="dpi">99</field>
+    </record>
+
+    <!-- ************************************** -->
+    <report
+        id="report_product_label_A5_57x35"
+        string="Product labels 57x35mm"
+        model="product.label"
+        report_type="qweb-pdf"
+        paperformat="garazd_product_label.paperformat_a5_clear"
+        name="garazd_product_label.report_product_label_57x35_template"
+        file="garazd_product_label.report_product_label_57x35_template"
+    />
+
+    <!-- label barcode A4 -->
+    <report
+        id="report_product_label_A4_40x35"
+        string="Product labels 40x35mm"
+        model="product.label"
+        report_type="qweb-pdf"
+        paperformat="garazd_product_label.paperformat_a4_clear"
+        name="garazd_product_label.report_product_label_40x35_template"
+        file="garazd_product_label.report_product_label_40x35_template"
+    />
+
+    <report
+        id="product.report_product_template_barcode"
+        string="Product Barcode(PDF)"
+        model="product.template"
+        report_type="qweb-pdf"
+        name="product.report_producttemplatebarcode"
+        file="product.report_producttemplatebarcode"
+        print_report_name="'Products barcode Label - %s' % (object.name)"
+        menu="False"
+        />
+		
+	 <report
+            id="product.report_product_product_barcode"
+            string="Product Barcode (PDF)"
+            model="product.product"
+            report_type="qweb-pdf"
+            name="product.report_productbarcode"
+            file="product.report_productbarcode"
+            print_report_name="'Products barcode - %s' % (object.name)"
+			 menu="False"
+        />
+     <report
+            id="product.report_product_template_label"
+            string="Product Shelve Tab Label(PDF)"
+            model="product.template"
+            report_type="qweb-pdf"
+            name="product.report_producttemplatelabel"
+            file="product.report_producttemplatelabel"
+            print_report_name="'Product Shelve Tab Label - %s' % (object.name)"
+        />
+
+</odoo>

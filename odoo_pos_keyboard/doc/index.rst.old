@@ -1,0 +1,194 @@
+============
+POS Keyboard
+============
+
+Installation
+============
+
+* `Install <https://odoo-development.readthedocs.io/en/latest/odoo/usage/install-module.html>`__ this module like any other module.
+
+Usage
+=====
+
+* `1. The Product Screen`_
+   * `1.1 SEARCH Mode`_
+   * `1.2 NORMAL Mode`_
+      * `1.2.1 The Num Pad`_
+      * `1.2.2 The Action Pad`_
+      * `1.2.3 The Order Widget`_
+* `2. Payment Screen`_
+* `3. The Receipt Screen`_
+* `4. The Client List Screen`_
+   * `4.1 NORMAL Mode`_
+   * `4.2 SEARCH Mode`_
+* `5. The Client Details Screen`_
+
+1. The Product Screen
+---------------------
+
+The product screen is the default screen for orders and is the startup screen of the POS interface.
+It includes several sub-widgets, such as product list widget, order widget, Numpad, Actionpad and the like.
+
+=================================  ============   ================================================
+Mode                                Key            Description
+=================================  ============   ================================================
+NORMAL                              ESC            Product screen opens by default in NORMAL mode.
+                                                   Only in NORMAL mode, that you can interact with widgets mentioned above.
+                                                   You can press ESC to get back from INSERT to NORMAL mode.
+SEARCH                              s              In SEARCH mode text input field named 'Search Products' will have the focus. You can filter out products that is being shown in the product list widget while in the SEARCH mode.
+=================================  ============   ================================================
+
+
+1.1 SEARCH Mode
+```````````````
+
+While in SEARCH mode you can filter out the products that you'd need to add to the current order.
+
+=================================  ============   ================================================
+Action                              Key            Description
+=================================  ============   ================================================
+Add item to order                   ENTER          Once you filtered out single item out of out of all the products displayed in the product screen,
+                                                   press 'ENTER' to add that item to the order.
+Return to NORMAL mode               ESC            If you press ESC while search field has the focus. then the focus is lost. If you press s again, search field will regain focus.
+=================================  ============   ================================================
+
+
+1.2 NORMAL Mode
+```````````````
+
+Actions (not bind to any particular widget) that can be performed while in the NORMAL mode.
+
+=================================  =====================
+Action                              Key
+=================================  =====================
+Insert new order                    INSERT
+Destroy current order               DELETE
+Confirm pop up                      ENTER
+Cancel pop up                       ESC
+=================================  =====================
+
+1.2.1 The Num Pad
+.................
+
+=================================  =====================   ================================================
+Action                              Key                     Description
+=================================  =====================   ================================================
+Enter Number                        1 - 9
+Delete Last Character               BACKSPACE               If qty is selected and order line shows 0 units, the selected order line will be deleted
+=================================  =====================   ================================================
+
+|
+
+
+=======  =====================
+Mode      Key
+=======  =====================
+Qty       q or /
+Disc      d or -
+Price     p or *
+=======  =====================
+
+1.2.2 The Action Pad
+....................
+
+The action pad contains the payment button and the customer selection button.
+
+=================================  =====================
+Button                              Shortcut
+=================================  =====================
+Customer                            c
+Payment                             Enter
+=================================  =====================
+
+1.2.3 The Order Widget
+......................
+
+The Order Widget displays information about the current order. It can have zero or more order lines.
+
+=================================  ==============================    ================================================
+Action                              Key                              Note
+=================================  ==============================    ================================================
+Change Selected Order Line          ArrowDown (j) and ArrowUp (k)
+Delete Last Character               BACKSPACE                        Differ based on the mode being selected: Qty, Disc, Price
+Delete Selected Order Line          r
+=================================  ==============================    ================================================
+
+
+2. Payment Screen
+-----------------
+
+The Payment Screen handles the payments, and validates the order.
+
+=================================  ===============================  ================================================
+Action                              Key                               Description
+=================================  ===============================  ================================================
+Numpad Input                        1 - 9 and .                       Used to enter the tendered amount in selected payment-line
+Validate                            Enter
+Change selected payment line        ArrowDown (j) and ArrowUp (k)
+Delete selected payment line        r
+Set customer                        c                                 You will be prompt with the client list screen, where you could assign a customer for the order
+Go back to the product screen       ESC
+=================================  ===============================  ================================================
+
+
+3. The Receipt Screen
+---------------------
+
+This displays the order's receipt and gives an option to print it on your web browser.
+
+=================================  =====================   ================================================
+Action                              Key                     Description
+=================================  =====================   ================================================
+Finalize the order                  ENTER                   Mark the current order as completed and proceed to the next
+Print receipt                       p
+=================================  =====================   ================================================
+
+4. The Client List Screen
+-------------------------
+
+You can use client list screen to create, edit, and to assign a customer to an order.
+
+=================================  ============   ================================================
+Mode                                Key            Description
+=================================  ============   ================================================
+SEARCH                              s              Gives focus to the text input field 'Search Customers'
+NORMAL                              ESC            Client screen opens by default in NORMAL mode. You can press ESC to get back to NORMAL mode while in SEARCH mode.
+=================================  ============   ================================================
+
+4.1 NORMAL Mode
+```````````````
+
+=================================  ============   ================================================
+Action                              Key            Description
+=================================  ============   ================================================
+Switch to SEARCH mode               s              Gives focus to the text input field 'Search Customers'
+Add new customer                    a
+Cancel                              ESC            Return back to the previous screen
+DESELECT customer                   ENTER          Only visible if a customer is already being selected
+Edit selected customer              e              Only visible if a customer is already being selected
+=================================  ============   ================================================
+
+4.2 SEARCH Mode
+```````````````
+
+In SEARCH mode the text input field 'Search Customers' is given the focus, and you can use it to filter out a customer that you'd need to assign to the current order.
+Once a single customer being filtered out from the list, press 'ENTER' to assign that customer to the current order.
+
+=================================  ============   ================================================
+Action                              Key            Description
+=================================  ============   ================================================
+SELECT CUSTOMER                     ENTER          Pressing ENTER will select the filtered customer out of all the customers displayed in the client screen.
+Return to NORMAL mode               ESC            If you press ESC while search field has the focus. then the focus is lost.
+=================================  ============   ================================================
+
+5. The Client Details Screen
+----------------------------
+
+The UI to add, update customer information.
+You can use usual shift and shift + tab keys to move between input fields, forward and backward respectively.
+
+=================================  ============   ================================================
+Action                              Key            Description
+=================================  ============   ================================================
+Save customer details               ENTER          If any of input fields have the focus, first press ESC to switch to NORMAL mode. Then press ENTER to save the changes being made.
+=================================  ============   ================================================

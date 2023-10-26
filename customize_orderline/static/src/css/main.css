@@ -1,0 +1,20 @@
+.pos .leftpane {
+    width: 550px;
+}
+.pos .rightpane {
+    left: 550px;
+}
+
+.pos .order {
+    width: 550px;
+    max-width: 600px;
+}
+
+.pos .numpad{
+    float: right;
+    border: solid 1px #bfbfbf;
+}
+
+.pos .order .orderlines {
+    width: 99%;
+}

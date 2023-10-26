@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+	<data>
+		<record id="view_inventory_list" model="ir.ui.view">
+			<field name="name">Inventory Reports</field>
+			<field name="model">inventory.reorder.reports</field>
+			<field name="arch" type="xml">
+				<form string="Inventory" version="7.0">					
+					<group string="Warehouses">
+						<field name="warehouse_ids"  string="Warehouses" options="{'no_open':True, 'no_quick_create':True,'no_create_edit':True}"/>
+					</group>
+					<group string="Location"
+						attrs="{'invisible': [('warehouse_ids', '=', [(6, False, [])])]}">
+						<field name="location_id" string="Select Location" options="{'no_open':True, 'no_quick_create':True,'no_create_edit':True}"/>
+					</group>
+					<group>
+						<field name="start_date" />
+						<field name="end_date" />
+						<field name="sort_order" invisible="1"/>
+						<field name="include_zero" />						
+					</group>
+					<group attrs="{'invisible': [('sort_order', '=', 'product_category')]}"
+						string="Select Products">
+						<field name="filter_product_ids" nolabel="1" options="{'no_quick_create':True,'no_create_edit':True}">
+							<tree string="Products">
+								<field name="name" />
+								<field name="default_code" />
+								<field name="attribute_value_ids" />
+								<field name="qty_available" />
+							</tree>
+						</field>
+					</group>
+					<group attrs="{'invisible': [('sort_order', '=', 'warehouse')]}"
+						string="Select Categories">
+						<field name="filter_product_categ_ids" nolabel="1" options="{'no_quick_create':True,'no_create_edit':True}">
+							<tree string="Products">
+								<field name="name" />
+							</tree>
+						</field>
+					</group>
+					<footer>
+						<button name="print_report" string="Print" type="object"
+							class="oe_highlight" />
+						or
+						<button string="Cancel" class="oe_link" special="cancel" />
+					</footer>
+				</form>
+			</field>
+		</record>
+
+		<record model="ir.actions.act_window" id="action_inventory_report">
+			<field name="name">Stock Reordering Report</field>
+			<field name="res_model">inventory.reorder.reports</field>
+			<field name="view_type">form</field>
+			<field name="view_mode">tree,form</field>
+			<field name="view_id" ref="view_inventory_list" />
+			<field name="target">new</field>
+		</record>
+
+		<menuitem action="action_inventory_report" id="menu_action_inventory_report"
+			parent="stock.menu_warehouse_report" sequence="1" />
+
+	</data>
+</odoo>

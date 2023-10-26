@@ -1,0 +1,16 @@
+<?xml version='1.0' encoding="utf-8"?>
+<odoo>
+	<data>
+		<record id="view_purchase_order_pivot_ext" model="ir.ui.view">
+	        <field name="model">purchase.report</field>
+	        <field name="inherit_id" ref="purchase.view_purchase_order_pivot"/>
+	        <field name="arch" type="xml">
+	            <field name="price_average" position="after">
+	            	<field name="total_discount" type="measure"/>
+	            	<field name="dis_amount" type="measure"/>
+                    <field name="average_price_unit" type="measure"/>
+                </field>
+	        </field>
+	    </record>
+	</data>
+</odoo>
